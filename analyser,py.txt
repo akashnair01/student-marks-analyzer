@@ -1,0 +1,34 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read dataset
+data = pd.read_csv("marks.csv")
+
+print("Student Marks Data")
+print(data)
+
+# Average marks
+print("\nAverage Marks")
+print(data[['Maths','Science','English']].mean())
+
+# Highest marks
+print("\nHighest Marks")
+print(data[['Maths','Science','English']].max())
+
+# Lowest marks
+print("\nLowest Marks")
+print(data[['Maths','Science','English']].min())
+
+# Total marks
+data["Total"] = data[['Maths','Science','English']].sum(axis=1)
+
+print("\nTotal Marks")
+print(data[["Name","Total"]])
+
+# Plot graph
+data.plot(x="Name", y=["Maths","Science","English"], kind="line")
+
+plt.title("Student Marks Analysis")
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.show()
